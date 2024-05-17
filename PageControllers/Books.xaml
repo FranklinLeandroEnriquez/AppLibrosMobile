@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppLibrosMobile.PageControllers.Books"
+             Title="Books">
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <StackLayout Margin="20" HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="cmdGetbyIdBook" Text="Ver" Margin="10" Clicked="cmdGetbyIdBook_Clicked"/>
+                    <Button x:Name="cmdPostBook" Text="Crear"  Margin="10" Clicked="cmdPostBook_Clicked"/>
+                    <Button x:Name="cmdPutBook" Text="Actualizar" Margin="10" Clicked="cmdPutBook_Clicked"/>
+                </StackLayout>
+            </StackLayout>
+
+            <Label Text="Libros" FontSize="30" HorizontalOptions="Center"/>
+
+            <StackLayout Margin="25,10">
+                <Label>Id</Label>
+                <Entry x:Name="txtId" />
+            </StackLayout>
+
+            <StackLayout Margin="25,10">
+                <Label>Titulo</Label>
+                <Entry x:Name="txtTitle" />
+            </StackLayout>
+
+            <StackLayout Margin="25,10">
+                <Label>Autor</Label>
+                <Entry x:Name="txtAutor"/>
+            </StackLayout>
+
+            <StackLayout Margin="25,10">
+                <Label>Editorial</Label>
+                <Entry x:Name="txtEditorial" />
+            </StackLayout>
+
+            <StackLayout Margin="25,10">
+                <Label>Año</Label>
+                
+                <Entry x:Name="txtAnio" />
+            </StackLayout>
+
+            <StackLayout Margin="25,10">
+                <Label>Páginas</Label>
+                <Entry x:Name="txtPaginas" />
+            </StackLayout>
+
+            <StackLayout Margin="25,10">
+                <Label>Genero</Label>
+                <Entry x:Name="txtGenero" />
+            </StackLayout>
+
+
+            <Label x:Name="lblListado" Text="" FontSize="20" HorizontalOptions="Center"/>
+            <ListView x:Name="lstItems" WidthRequest="350" HeightRequest="310" HorizontalOptions="Center" VerticalOptions="Center" Margin="30">
+                <ListView.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="ID" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Grid.Column="1" Text="Titulo" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Grid.Column="2" Text="Autor" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Grid.Column="3" Text="Acción" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Frame Grid.Column="0" BorderColor="Black" Padding="0" CornerRadius="0">
+                                    <Label Text="{Binding Id}" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="1" BorderColor="Black" Padding="0" CornerRadius="0" Margin="2,0">
+                                    <Label Text="{Binding Titulo}" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="2" BorderColor="Black" Padding="0" CornerRadius="0" Margin="2,0">
+                                    <Label Text="{Binding Autor}" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="3" BorderColor="Black" Padding="0" CornerRadius="0" Margin="2,0">
+                                    <Button x:Name="cmdDeleteBook" Grid.Column="2" Text="Eliminar" Clicked="cmdDeleteBook_Clicked" CommandParameter="{Binding Id}"  FontSize="10" HeightRequest="35" WidthRequest="75"/>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

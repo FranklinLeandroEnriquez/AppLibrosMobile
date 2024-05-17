@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppLibrosMobile.PageControllers.Genres"
+             Title="Genres">
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <Label Text="Generos" FontSize="20" HorizontalOptions="Center" Margin="10, 10"/>
+
+            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="cmdGetByIdGenres" Text="Ver" Margin="10" Clicked="cmdGetByIdGenres_Clicked"/>
+                    <Button x:Name="cmdPostGenres" Text="Crear"  Margin="10" Clicked="cmdPostGenres_Clicked"/>
+                    <Button x:Name="cmdPutGenres" Text="Actualizar" Margin="10" Clicked="cmdPutGenres_Clicked"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Margin="40, 20">
+                <Label Text="ID"/>
+                <Entry x:Name="txtId" Keyboard="Numeric"/>
+            </StackLayout>
+
+            <StackLayout Margin="40,0">
+                <Label Text="Name" />
+                <Entry x:Name="txtName" />
+            </StackLayout>
+
+            <StackLayout Margin="40,0">
+                <Label Text="Descripción" />
+                <Entry x:Name="txtDescription" />
+            </StackLayout>
+
+
+
+            <Label x:Name="lblListado" Text="" FontSize="20" HorizontalOptions="Center"/>
+            <ListView x:Name="lstItems" WidthRequest="350" HeightRequest="310" HorizontalOptions="Center" VerticalOptions="Center" Margin="30">
+                <ListView.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="ID" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Grid.Column="1" Text="Nombre" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Grid.Column="2" Text="Descripción" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Grid.Column="3" Text="Acción" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Frame Grid.Column="0" BorderColor="Black" Padding="0" CornerRadius="0" Margin="2,0">
+                                    <Label Text="{Binding Id}" TextColor="Black" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="1" BorderColor="Black" Padding="0" CornerRadius="0" Margin="2,0">
+                                    <Label Text="{Binding Nombre}" TextColor="Black" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="2" BorderColor="Black" Padding="0" CornerRadius="0" Margin="2,0">
+                                    <Label Text="{Binding Descripcion}" TextColor="Black" FontSize="10" HorizontalOptions="Center" VerticalOptions="Center" />
+                                </Frame>
+                                <Frame Grid.Column="3" BorderColor="Black" Padding="0" CornerRadius="0" Margin="2,0">
+                                    <Button x:Name="cmdDelete" Grid.Column="3" Text="Eliminar" Clicked="cmdDelete_Clicked" CommandParameter="{Binding Id}"  FontSize="10" HeightRequest="35" WidthRequest="75"/>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
